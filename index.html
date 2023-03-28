@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HANDLEBAR JS</title>
+  <link rel="stylesheet" href="./CSS/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="page-wrap">
+    <h1  class="main__heading" style="text-align: center">Pet Species</h1>
+    <div id="pets-container"></div>
+  </div>
+</body>
+<script id="petsTemplate" type="text/x-handlebars-template">
+    {{#each pets}}
+      <div class="accordion myAccordian" id="accordion{{name}}">
+        <div class="accordion-item myAccordian_item">
+          <h2 class="accordion-header" id="heading{{name}}">
+            <button
+              class="accordion-button myAccordBtn collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse{{name}}"
+              aria-expanded="true"
+              aria-controls="collapse{{name}}"
+            >
+              {{name}}
+            </button>
+          </h2>
+          <div
+            id="collapse{{name}}"
+            class="accordion-collapse collapse"
+            aria-labelledby="heading{{name}}"
+            data-bs-parent="#accordion{{name}}"
+          >
+            <div class="accordion-body">
+              <div class="pet">
+                <div class="photo-column">
+                  <img src="{{photo}}" />
+                </div>
+
+                <div class="info-column">
+                  <h2>{{name}} <span class="species">({{species}})</span></h2>
+
+                  {{#if favFoods}}
+                    <h4 class="headline-bar">Favorite Foods</h4>
+                    <ul class="favorite-foods">
+                      {{#each favFoods}}
+                        <li>{{{this}}}</li>
+                      {{/each}}
+                    </ul>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="./JS/handlebars-v4.7.7.js"></script>
+
+<script src="./JS/index.js" type="module"></script>
+
+</html>
